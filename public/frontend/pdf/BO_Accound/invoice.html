@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Invoice | Clubsbasic</title>
+    <!--favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="img/LOGO%20Asset%2013ldpi.png">
+    <style>
+        /* page */
+        html {
+            font: 10px/1 'Open Sans', sans-serif;
+            overflow: auto;
+            padding: 0.5in;
+            background: #999;
+            cursor: default;
+        }
+
+        body {
+            box-sizing: border-box;
+            height: auto;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0.5in;
+            width: 8.5in;
+            background: #FFF;
+            border-radius: 1px;
+            box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+        }
+
+        @media print {
+
+            * {
+                -webkit-print-color-adjust: exact;
+            }
+
+            html {
+                background: none;
+                padding: 0;
+            }
+
+            body {
+                box-shadow: none;
+                margin: 0;
+            }
+
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        /* header */
+        /* main css */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        header img {
+            width: 100%;
+        }
+
+        .no-date {
+            padding: 10px 0;
+        }
+
+        .application_no {
+            width: 50%;
+            float: left;
+        }
+
+        .date {
+            width: 50%;
+            float: left;
+            text-align: right;
+        }
+
+        .section2 {
+            padding: 10px 0;
+        }
+
+        .box {
+            border: 1px solid #000;
+            padding: 3px;
+        }
+
+        .boxbox1 {
+            float: left;
+            width: 50%;
+        }
+
+        .boxbox2 {
+            float: left;
+            width: 50%;
+            text-align: right;
+        }
+
+        .boxbox1 span {
+            padding: 0 3px;
+        }
+
+        .boxbox2 span {
+            padding: 0 3px;
+        }
+
+        .box2 {
+            padding: 10px;
+            border: 1px solid #000;
+        }
+
+        .margin {
+            display: block;
+            float: right;
+        }
+
+        .box2box1 {
+            float: left;
+            width: 20%;
+        }
+
+        .box2box2 {
+            float: left;
+            width: 50%;
+        }
+
+        .box2box3 {
+            float: left;
+            width: 30%;
+            text-align: right;
+        }
+
+        .box2box3 table {
+            float: right;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #717171;
+            border-collapse: collapse;
+        }
+
+        table tr td {
+            padding: 0;
+            min-width: 19px;
+            height: 14px;
+            text-align: center;
+        }
+
+        .learge tr td {
+            padding: 0;
+            min-width: 19px;
+            height: 17px;
+            text-align: center;
+        }
+
+        .box2box1 p {
+            margin: 0;
+        }
+
+        .bo_id1 {
+            float: left;
+            width: 50%;
+        }
+
+        .bo_id2 {
+            float: left;
+            width: 50%;
+        }
+
+        .boid2_table {
+            padding-top: 10px;
+        }
+
+        .bo_id1 p {
+            margin: 0;
+        }
+
+        .box2box3 p {
+            margin: 0;
+        }
+
+        .request-header .main {
+            padding-left: 10px;
+        }
+
+        .box-header {
+            margin: 0;
+            padding: 4px;
+            background: #99CCFF;
+            margin-bottom: 5px;
+
+        }
+
+        .first_appli_box {
+            padding: 10px 3px;
+            border: 1px solid #000;
+        }
+
+        .first_appli_box p {
+            margin: 0;
+        }
+
+        .short_name {
+            float: left;
+            width: 82%;
+            padding-top: 10px;
+        }
+
+        .title {
+            float: left;
+            width: 17%;
+            text-align: right;
+            padding-top: 10px;
+        }
+
+        .title table {
+            float: right;
+        }
+
+        .apply_text {
+            padding-top: 5px;
+        }
+
+        .apply_dot {
+            text-align: right;
+        }
+
+        .gender_head {
+            padding-top: 5px;
+        }
+
+        .gender_head span {
+            margin-right: 10px;
+        }
+
+        .gender_header {
+            margin-right: 25px !important;
+        }
+
+        .occupation {
+            text-align: right;
+        }
+
+        .py_8 {
+            padding: 8px 0;
+        }
+
+        .pb_8 {
+            padding-bottom: 8px;
+        }
+
+        .my_5 {
+            margin: 8px 0 4px 0;
+        }
+
+        .p_5 {
+            padding: 5px;
+        }
+
+        .mr_5 {
+            margin-right: 5px;
+        }
+
+        .contact_box {
+            border: 1px solid #000;
+        }
+
+        .bank1 {
+            width: 32%;
+            float: left;
+        }
+
+        .bank1 span {
+            margin-right: 5px;
+        }
+
+        .bank2 {
+            width: 30%;
+            float: left;
+        }
+
+        .bank2 span {
+            margin-right: 5px;
+        }
+
+        .bank3 {
+            width: 38%;
+            float: left;
+        }
+
+        .bank3 span {
+            padding-top: 9px;
+            display: inline-block;
+        }
+
+        .other1 {
+            float: left;
+            width: 30%;
+        }
+
+        .other2 {
+            float: left;
+            width: 30%;
+            margin-top: 8px;
+        }
+
+        .other3 {
+            float: left;
+            width: 40%;
+        }
+
+        .dateofdate {
+            float: left;
+            width: 50%;
+            padding-top: 5px;
+        }
+
+        .dateof_table {
+            float: left;
+            width: 50%;
+        }
+
+        .input_custom {
+            width: 300px;
+            outline: none;
+        }
+
+        .other_reg {
+            float: left;
+            width: 70%;
+        }
+
+        .other_date {
+            float: left;
+            width: 30%;
+        }
+
+        .joint1 {
+            float: left;
+            width: 80%
+        }
+
+        .joint2 {
+            float: left;
+            width: 20%;
+            text-align: right;
+        }
+
+        .joint2 table {
+            float: right;
+        }
+
+        .account1 {
+            float: left;
+        }
+
+        .Nominees {
+            font-size: 12px;
+            line-height: 15px;
+            text-align: justify;
+            margin: 0;
+        }
+
+        .contact1 {
+            float: left;
+            width: 50%;
+        }
+
+        .photo_single {
+            float: left;
+            width: 33.33%;
+        }
+
+        .photo-box {
+            width: 100px;
+            border: 1px solid #000;
+            padding: 20px;
+            margin: 15px auto;
+            height: 100px;
+            text-align: center;
+            color: #6d6c6c;
+            font-size: 11px;
+        }
+
+        .photo_footer {
+            width: 33.33%;
+            float: left;
+            text-align: center;
+        }
+
+        .photo_footer_box {
+            width: 140px;
+            display: inline-block;
+            height: auto;
+            margin: 0 auto;
+            font-size: 11px;
+            color: #6d6c6c;
+            margin-top: 8px;
+        }
+        .stand1{
+            margin-right: 30px;
+            
+        }
+        .custom-table table{
+            width: 100%;
+        }
+        .custom-table table tr th{
+            padding: 4px;
+        }
+        .custom-table table tr td{
+            padding: 6px 0;
+        }
+        .custom-table table tr td:first-child{
+            width: 130px;
+        }
+        .custom-table table tr td:last-child{
+            width: 250px;
+        }
+        .size12{
+            font-size: 12px;
+        }
+        .introduction1{
+            float: left;
+            width: 50%;
+        }
+        .center{
+            display: block;
+            text-align: center;
+        }
+        .introduction2 span{
+            margin-left: 20px;
+        }
+        .introduction2 table{
+            float: right;
+        }
+
+
+
+
+
+
+        /* end main css */
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="head2.png" alt="header">
+    </header>
+    <section class="no-date">
+        <div class="application_no">
+            <span>Application No ………………………………………… </span>
+        </div>
+        <div class="date">
+            <span>Date (DDMMYYYY)………………………………………………</span>
+        </div>
+    </section>
+    <section class="section2">
+        <span>Please Tick whichever is applicable</span>
+        <div class="box clearfix">
+            <div class="boxbox1">
+                <b>BO Category:</b>
+                <span>Regular <input type="checkbox"></span>
+                <span>Omnibus <input type="checkbox"></span>
+                <span>Clearing <input type="checkbox"></span>
+            </div>
+            <div class="boxbox2">
+                <b>BO Category: </b>
+                <span>Regular <input type="checkbox"></span>
+                <span>Omnibus <input type="checkbox"></span>
+                <span>Clearing <input type="checkbox"></span>
+
+            </div>
+        </div>
+
+    </section>
+    <section class="section3 clearfix">
+        <div class="box2 clearfix">
+            <div class="clearfix">
+                <span class="">Name of CDBL Participant (Up to 99 Characters) </span>
+                <p class="margin">………………………………………………………………………………………………………………………………</p>
+            </div>
+            <div class="box2-section2 clearfix">
+                <div class="box2box1">
+                    <p>CDBL Participant ID</p>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="box2box2">
+                    <div class="bo_id1">
+                        <p>BO ID</p>
+                        <div>
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="bo_id2">
+                        <div class="boid2_table">
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box2box3">
+                    <p>Date Account Opened (DDMMYYYY)</p>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="main">I / We request you to open a Depository Account in my / our name as per the following details:</h3>
+            <h3 class="box-header">1. First Applicant</h3>
+        </div>
+        <div class="first_appli_box  clearfix">
+            <p>Name in Full of Account Holder (Up to 99 Characters) …………………………………………………………………………………………………………</p>
+            <div class="clearfix">
+                <div class="short_name clearfix">
+                    <p>Short Name of Account Holder ( Insert full name starting with Title i.e. Mr. / Mrs. / Ms / Dr, abbreviate only if over 30 characters)</p>
+                    <table class="learge">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="title clearfix">
+                    <p>Title i.e. Mr. /Mrs. /Ms. /Dr</p>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="apply_text clearfix">
+                <span><b>(In case of a Company/Firm/Statutory Body)</b> Name of Contact Person </span>
+            </div>
+            <div class="apply_dot">
+                <span> ………………………………………………………………………………………………………</span>
+            </div>
+            <div class="gender_head">
+                <span class="gender_header"><b>In Case of Individual</b> </span>
+                <span>Male <input type="checkbox"></span>
+                <span>Female <input type="checkbox"></span>
+            </div>
+            <div class="occupation pb_8">
+                <span>Occupation (30Characters) ………………………………………………………………………………………</span>
+            </div>
+            <div class="py_8">
+                <span><i>Father’s / Husband’s Name</i>……………………………………………………………………………………………………………………………………………………………</span>
+            </div>
+            <div class="py_8">
+                <span><i>Mother’s Name</i>………………………………………………………………………………………………………………………………………………………………………… </span>
+            </div>
+        </div>
+    </section>
+    <section class="Contact-section clearfix">
+        <h3 class="box-header my_5">2. Contact Details:</h3>
+        <div class="contact_box p_5">
+            <div class="py_8">
+                <span>Address ………………………………………………………………………………………………………………………………………………………………………………</span>
+            </div>
+            <div class="py_8">
+                <span>City…………………………… Post Code………………… State / Division ……………………… Country…………………………… Telephone…………………………</span>
+            </div>
+            <div class="py_8">
+                <span>Mobile Phone…………………………… Fax…………………………………… E-mail…………………………………………………………………………………………</span>
+            </div>
+        </div>
+    </section>
+    <section class="Contact-section clearfix">
+        <h3 class="box-header my_5">3. Passport Details</h3>
+        <div class="contact_box p_5">
+            <div class="py_8">
+                <i>Passport No</i>………………………………… <i>Issue Place</i>………………………………… <i>Issue Date</i>………………………… <i>Expiry Date</i>…………………………………
+            </div>
+        </div>
+    </section>
+    <section class="Contact-section clearfix">
+        <h3 class="box-header my_5">4. Bank Details</h3>
+        <div class="contact_box p_5">
+            <div class="py_8">
+                Routing Number ……………………………………………………… Bank Account Number …………………………………………………………………………………
+            </div>
+            <div class="py_8">
+                Bank Name…………………………………………………………… Branch Name……………………………………… District Name……………………………………
+            </div>
+            <div class="py_8">
+                Bank Identifier Code (BIC)……………………………………… SWIFT Code…………………………… International Bank A/C No.(IBAN)………………………………
+            </div>
+            <div class="py_8 clearfix">
+                <div class="bank1 clearfix">
+                    <span class="bank3_name">Electronic Dividend Credit:</span>
+                    <span>Yes <input type="checkbox"></span>
+                    <span>No <input type="checkbox"></span>
+                </div>
+                <div class="bank2 clearfix">
+                    <span class="bank3_name">Tax Exemption if any:</span>
+                    <span>Yes <input type="checkbox"></span>
+                    <span>No <input type="checkbox"></span>
+                </div>
+                <div class="bank3">
+                    <span><i>TIN / Tax ID :</i>……………………………………………………</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="Contact-section clearfix">
+        <h3 class="box-header my_5">5. Others Information </h3>
+        <div class="contact_box p_5">
+            <div class="py_8 clearfix">
+                <span class="other1">
+                    <span><b>Residency:</b></span>
+                    <span>Resident<input type="checkbox"></span>
+                    <span>Non Resident<input type="checkbox"></span>
+                </span>
+                <span class="other2">
+                    Nationality…………………………….………….
+                </span>
+                <span class="other3">
+                    <span class="dateofdate">Date Of Birth (DDMMYYYY)</span>
+                    <span class="fateof_table">
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </span>
+                </span>
+            </div>
+            <div class="py_8 clearfix">
+                <span class="other_line1">
+                    <span class="mr_5">Statement Cycle Code:</span>
+                    <span class="mr_5">Daily<input type="checkbox"></span>
+                    <span class="mr_5">Weekly<input type="checkbox"></span>
+                    <span class="mr_5">Fortnightly<input type="checkbox"></span>
+                    <span class="mr_5">Monthly<input type="checkbox"></span>
+                    <span class="mr_5">Other (Please Specify) ………………………………………………………………</span>
+                </span>
+            </div>
+            <div class="py_8 clearfix">
+                <span>Internal Ref. No (To be filled in by CDBL Participant) ………………………………………………………………… </span>
+            </div>
+            <div class="py_8 clearfix">
+                <span class="mr_5"><b>National ID Card Number:</b></span>
+                <span><input type="text" class="input_custom"></span>
+            </div>
+            <div class="clearfix">
+                <span><b>In Case of Company:</b></span>
+            </div>
+            <div class="clearfix">
+                <span class="other_reg py_8">
+                    <span>Registration No…………………………………………………………………………………………………………</span>
+                </span>
+                <span class="other_date">
+                    <span>Date of Registration (DDMMYYYY)</span>
+                    <span>
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </span>
+
+                </span>
+            </div>
+
+        </div>
+    </section>
+    <section class="Contact-section clearfix">
+        <h3 class="box-header my_5">6. Joint Applicant (Second Account Holder) </h3>
+        <div class="contact_box p_5">
+            <div class="py_8 clearfix">
+                <span>Name in Full (Up to 99 Characters) …………………………………………………………………………………………………………………………………………………</span>
+            </div>
+            <div class="clearfix">
+                <span class="joint1">
+                    <span>Short Name of Account Holder ( Insert full name starting with Title i.e. Mr. / Mrs. / Ms / Dr, abbreviate only if over 30 characters)</span>
+                    <span>
+                        <table class="learge">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </span>
+                </span>
+                <span class="joint2">
+                    <span><i>Title i.e. Mr. /Mrs. /Ms. /Dr.</i></span>
+                    <span>
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </span>
+                </span>
+            </div>
+
+        </div>
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header my_5">7. Account Link Request</h3>
+        </div>
+        <div class="pb_8 clearfix">
+            <span class="mr_5"><i>Would you like to create a link to your existing Depository Account ?</i></span>
+            <span class="mr_5">Yes <input type="checkbox"></span>
+            <span class="mr_5">No <input type="checkbox"></span>
+        </div>
+        <div>
+            <span class="account1 py_8 mr_5"><i>If yes, then please provide the Depository BO Account Code ( 8 Digits):</i></span>
+            <span class="account1 mr_5">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </span>
+        </div>
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header">8. Nominees/ Heirs</h3>
+        </div>
+        <div class="pb_8 clearfix">
+            <p class="mr_5 Nominees">If account holder(s) wish to nominate person(s) who will be entitled to receive securities outstanding in the account in the event of the death of
+                the sole account holder / all the joint account holders, a separate nomination Form - 23 must be fiiled up and signed by all account holders and
+                the nominees giving names of nominees , relationship with first account holder, percentage distribution and contact details. If any nominee is a
+                minor, guardian’s name, address, relationship with nominee has also to be provided. </p>
+
+        </div>
+
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header">9. Power of Attorney (POA)</h3>
+        </div>
+        <div class="pb_8 clearfix">
+            <p class="mr_5 Nominees">If account holder(s) wish to give a Power of Attorney (POA) to someone to operate the account, a separate Form - 20 must be fiiled up and
+                signed by all account holders giving the name, contact details etc. of the POA holder and a POA document lodged with the form. </p>
+
+        </div>
+
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header">10. To be filled in by the Stock Broker / Stock Exchange in case the application is for opening a Clearing Account</h3>
+        </div>
+        <div class="contact_box p_5 clearfix">
+            <span class="contact1">
+                <span class="mr_5">Exchange Name:</span>
+                <span class="mr_5">DSE <input type="checkbox"></span>
+                <span class="mr_5">Trading ID……………………</span>
+            </span>
+            <span class="contact1">
+                <span class="mr_5">CSE <input type="checkbox"></span>
+                <span class="mr_5">Trading ID…………………………………….</span>
+            </span>
+        </div>
+
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header my_5">11. Photograph</h3>
+        </div>
+        <div class="contact_box p_5 clearfix">
+            <span class="photo_single">
+                <div class="photo-box">
+                    <p>Please paste
+                        recent passport
+                        size Photograph of
+                        1
+                        st Applicant or
+                        Authorized
+                        Signatory in case
+                        of Limited Co. Only </p>
+                </div>
+            </span>
+            <span class="photo_single">
+                <div class="photo-box">
+                    <p>
+                        Please paste
+                        recent passport
+                        size Photograph of
+                        1
+                        st Applicant or
+                        Authorized
+                        Signatory in case
+                        of Limited Co. Only
+                    </p>
+                </div>
+            </span>
+            <span class="photo_single">
+                <div class="photo-box">
+                    <p>
+                        Please paste
+                        recent passport
+                        size Photograph of
+                        1
+                        st Applicant or
+                        Authorized
+                        Signatory in case
+                        of Limited Co. Only
+                    </p>
+                </div>
+            </span>
+        </div>
+        <div class="clearfix">
+            <span class="photo_footer clearfix">
+                <span class="photo_footer_box">
+                    1st Applicant or Authorized
+                    Signatory in case of Ltd Co.
+                </span>
+            </span>
+            <span class="photo_footer clearfix">
+                <span class="photo_footer_box">
+                    2nd Applicant or Authorized
+                    Signatory in case of Ltd Co
+                </span>
+            </span>
+            <span class="photo_footer clearfix">
+                <span class="photo_footer_box">
+                    Authorized Signatory in
+                    case of Ltd Co. Only
+                </span>
+            </span>
+        </div>
+
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header my_5">12. Standing Instructions</h3>
+        </div>
+        <div class="pb_8 clearfix">
+            <span class="stand1"> I/We authorize you to receive facsimile (fax) transfer instructions for delivery</span>
+            <span class="stand1">Yes <input type="checkbox"></span>
+            <span class="stand1">No <input type="checkbox"></span>
+
+        </div>
+
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header">13. DECLARATION</h3>
+        </div>
+        <div class="clearfix">
+            <p class="mr_5 Nominees">The rules and regulations of the Depository and CDBL Participant pertaining to an account which are in force now have been read by me/us and
+I/we have understood the same and I/we agree to abide by and to be bound by the rules as are in force from time to time for such accounts. I/We
+also declare that the particulars given by me/us are true to the best of my/our knowledge as on the date of making such application. I/We further
+agree that any false/misleading information given by me/us or suppression of any material fact will render my/our account liable for termination
+and further action.</p>
+
+        </div>
+        <div class="custom-table">
+            <table>
+                <tr>
+                    <th>Applicants </th>
+                    <th>Name of applicants / Authorized signatories in case of ltd Co</th>
+                    <th>Signature with date</th>
+                </tr>
+                <tr>
+                    <td>First Applicant </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Second Applicant  </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3rd Signatory (Ltd Co. only)   </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+    </section>
+    <section class="request-section clearfix">
+        <div class="request-header clearfix">
+            <h3 class="box-header my_5">14. Special Instructions on operation of Joint Account</h3>
+        </div>
+        <div class="pb_8 clearfix">
+            <span class="stand1 size12"> <input type="checkbox"> Either or Survivor.</span>
+            <span class="stand1 size12"><input type="checkbox"> Any one Can operate</span>
+            <span class="stand1 size12"><input type="checkbox"> Any two will operate jointly</span>
+        </div>
+        <div class="pb_8 clearfix">
+            <span class="stand1 size12"> <input type="checkbox">
+                Account will be operated by ________________________________________________
+                with any one of the others.
+            </span>
+        </div>
+
+    </section>
+    <section class="Contact-section clearfix">
+        <h3 class="box-header my_5">15. Introduction </h3>
+        <div class="contact_box p_5">
+            <div class="py_8 clearfix">
+                <span>Introduction by an existing account holder of …………………………………………………… Depository Participant’s Name …………………………………………</span>
+            </div>
+            <div class="py_8 clearfix">
+                <span>I confirm the identity, occupation and address of the applicant(s) ………………………………………………………………………………………………………………</span>
+            </div>
+            <div class="introduction clearfix">
+              <span class="introduction1">
+                   <span class="size12">………………………………………………………………Account ID</span>
+                   <span class="center">(Signature of Introducer) </span>
+              </span>
+              <span class="introduction1 introduction2">
+                  <span>Introducer's Name</span>
+                  <table>
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                  </table>
+              </span>
+            </div>
+
+        </div>
+    </section>
+
+
+</body>
+
+</html>
