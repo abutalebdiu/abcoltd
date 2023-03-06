@@ -67,35 +67,35 @@ class FrontendController extends Controller
 
             $countdata = Client::where('code',$request->code)->where('boid',$request->boid)->count();
             $userdata  = User::where('code',$request->code)->where('boid',$request->boid)->count();
-            
-            
+
+
             if($userdata>0)
             {
                    $notification = array(
                         'message' => 'Client Code Already Exsiting Our Database',
                         'alert-type' => 'error'
                     );
-    
+
                     return redirect()->back()->with($notification);
             }
-          
+
 
             if($countdata>0)
             {
-                
-                
+
+
                 $lastusercount = User::count();
                 $lastuserid    = User::orderBy('id','DESC')->first();
 
                 $user = new User();
-    
+
                 if($lastusercount>0){
                     $user->user_uid   = $lastuserid->user_uid+1;
                 }
                 else{
                     $user->user_uid   = '1001';
                 }
-    
+
                 $user->code     = $request->code;
                 $user->boid     = $request->boid;
                 $user->name     = $request->name;
@@ -106,11 +106,11 @@ class FrontendController extends Controller
                 $user->type     = 2;
                 $user->status   = 1;
                 $result =  $user->save();
-    
-    
-    
+
+
+
                 $data = array('name'=>" ");
-       
+
                 Mail::send(['text'=>'mail.registration'], $data, function($message) {
                      $message->to('rnisecurities@yahoo.com', ' ')->subject
                         ('Website Notification');
@@ -124,11 +124,11 @@ class FrontendController extends Controller
                         'message' => 'Client Registration Successfully Complete. Wait for Approval',
                         'alert-type' => 'success'
                     );
-    
+
                     return redirect()->back()->with($notification);
-                } 
+                }
                 else{
-    
+
                     $notification = array(
                         'message' => 'Something Wrong!',
                         'alert-type' => 'success'
@@ -173,14 +173,14 @@ class FrontendController extends Controller
 
 	{
         $this->validate($request, [
-            
+
             'username' => 'required',
             'password' => 'required',
         ]);
 
 		$input = $request->all();
 
-       
+
 
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'code';
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
@@ -200,10 +200,10 @@ class FrontendController extends Controller
             'message' => 'Your Email OR Password Not Match!',
             'alert-type' => 'error'
             );
-      
+
             return redirect()->route('client.user.login')->with($notification);
 
-            
+
         }
 
 
@@ -220,62 +220,62 @@ class FrontendController extends Controller
 
     public function passwordreset(Request $request)
     {
-        
+
         $mobile = $request->username;
-        
+
         $finduser = User::where('mobile',$mobile)->first();
-        
-        
+
+
         if($finduser)
         {
             $newpassword = rand(100000,999999);
-            
+
             $finduser->password = bcrypt($newpassword);
-            
+
             $finduser->save();
-            
+
             $notification = array(
                 'message' => 'you are successfully change your password! Please check your mobile number',
                 'alert-type' => 'success'
             );
-            
-            
-            
+
+
+
             $data['message'] = "Dear ".$finduser->name.",
-Your new password is ".$newpassword." 
+Your new password is ".$newpassword."
 
 RNI Securities Ltd.";
-            
-        
+
+
             $data['number'] = $mobile;
-           
+
             try{
                     $smsJob = new MatchSendSms($data['number'],$data['message']);
-              
+
                     dispatch($smsJob);
             }
             catch(\Exception $e){
                 echo $e->getMessage();
             }
-      
+
             return redirect()->route('client.user.login')->with($notification);
-            
+
         }
         else{
-            
+
             $notification = array(
             'message' => 'Your provided mobile number Not Match!',
             'alert-type' => 'error'
             );
-      
+
             return redirect()->back()->with($notification);
-            
+
         }
-        
-        
-        
+
+
+
     }
-    
+
 
 
 
@@ -291,7 +291,7 @@ public function index()
          $data['sliders'] = Slider::latest()->get();
         $data['blogs'] = Blog::latest()->limit(4)->get();
         $data['notic'] = Notice::latest()->limit(5)->get();
-        
+
 		return view('frontend.pages.index',$data);
 	}
 
@@ -398,13 +398,13 @@ public function index()
             'message' => 'Link Submit Successfully!',
             'alert-type' => 'success'
             );
-            
+
             return redirect()->route('link')->with($notification);
 
 
 
 
-        
+
     }
 
 
@@ -422,15 +422,21 @@ public function index()
     {
         return view('frontend.pages.singleboopening');
     }
-    
-    
+
+
     public function jointboopening()
     {
         return view('frontend.pages.jointboopening');
     }
-    
-    
-    
+
+
+    public function nrbopenning()
+    {
+        return view('frontend.pages.nrbopenning');
+    }
+
+
+
 
     public  function singleboostor(Request $request){
             echo "success";
@@ -451,14 +457,14 @@ public function index()
         $data['balances'] = Balance::where('code',Auth::user()->code)->first();
         $data['clients'] = ChildIpo::where('master_code',Auth::user()->code)->get();
         $data['client'] = Client::where('code',Auth::user()->code)->first();
-        
-        
+
+
         }
         else{
              $data['balances'] = Balance::where('id',0)->first();
              $data['clients'] = ChildIpo::where('master_code',0)->get();
              $data['client'] = Client::where('code',0)->first();
-        
+
         }
         return view('frontend.pages.balanceinqueryform',$data);
     }
@@ -474,22 +480,22 @@ public function index()
         else{
              $data['balances'] = Balance::where('id',0)->first();
              $data['deposit'] = Deposit::latest()->where('client_code',0000)->get();
-             
+
         }
         return view('frontend.pages.depositshow',$data);
     }
 
     public function depositpost(Request $request){
-        
+
           if(Auth::Check()){
         }
         else{
-            
+
             $notification = array(
                 'message' => 'Please login First!',
                 'alert-type' => 'error'
              );
-             return redirect()->route('client.user.login')->with($notification); 
+             return redirect()->route('client.user.login')->with($notification);
         }
 
         $request->validate([
@@ -521,7 +527,7 @@ public function index()
         $data->for_deposit = $request->for_deposit;
         $data->bank = $request->bank;
         $data->type = $request->for_deposit;
-         
+
         $image = $request->slep;
         if($image){
         $uniqname = uniqid();
@@ -531,60 +537,60 @@ public function index()
         $image->move($filepath,$imagename);
         $data->attachment = $imagename;
         }
-        
+
         $data->comment = $request->comment;
         $data->status = 1;
         $data->save();
-        
-        
+
+
         $data = array('name'=>" ");
-   
+
         Mail::send(['text'=>'mail.deposit'], $data, function($message) {
              $message->to('rnisecurities@yahoo.com', ' ')->subject
                 ('Website Notification');
              $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
         });
-        
-        
-        
+
+
+
 
         $notification = array(
             'message' => 'Deposit Successfully!',
             'alert-type' => 'success'
             );
-            
+
             return redirect()->route('deposit.show')->with($notification);
     }
-    
+
 //        public function depositpost(Request $request){
-//        
-//        
+//
+//
 //          if(Auth::Check()){
-//             
-//           
+//
+//
 //        }
 //        else{
-//            
+//
 //            $notification = array(
 //                'message' => 'Please login First!',
 //                'alert-type' => 'error'
 //             );
-//                
 //
-//             return redirect()->route('client.user.login')->with($notification); 
-//            
+//
+//             return redirect()->route('client.user.login')->with($notification);
+//
 //        }
 //
 //        $request->validate([
 //            'type' => 'required',
 //            'amount' => 'required'
 //        ]);
-//        
-//       
-//        
-//        
-//        
-//        
+//
+//
+//
+//
+//
+//
 //
 //        $depositcount = Deposit::count();
 //        $lastuserid    = Deposit::orderBy('id','DESC')->first();
@@ -605,7 +611,7 @@ public function index()
 //            'message' => 'Deposit Successfully!',
 //            'alert-type' => 'success'
 //            );
-//            
+//
 //            return redirect()->route('deposit.show')->with($notification);
 //    }
 
@@ -614,48 +620,48 @@ public function index()
         if(Auth::Check()){
           $data['withdraw'] = Withdraw::latest()->where('code',Auth::user()->code)->get();
           $data['balances'] = Balance::where('code',Auth::user()->code)->first();
-          
+
           $data['client'] = Client::where('code',Auth::user()->code)->first();
-            
+
           $data['clients'] = ChildIpo::where('master_code',Auth::user()->code)->where('status',2)->get();
-        
-        
-        
+
+
+
         }
         else{
              $data['balances'] = Balance::where('id',0)->first();
              $data['withdraw'] = Withdraw::latest()->where('code',000)->get();
-             
+
              $data['clients'] = ChildIpo::where('master_code',00)->get();
-        
+
         }
 
-      
+
         return view('frontend.pages.withdrawshow',$data);
     }
 
     public function withdrawpost(Request $request){
-        
-        
+
+
         if(Auth::Check()){
-             
-           
+
+
         }
         else{
-            
+
             $notification = array(
                 'message' => 'Please login First!',
                 'alert-type' => 'error'
              );
-                
 
-             return redirect()->route('client.user.login')->with($notification);  
+
+             return redirect()->route('client.user.login')->with($notification);
         }
-        
-        
-        
 
-        
+
+
+
+
         $request->validate([
             'code' => 'required',
             'withdraw' => 'required',
@@ -669,7 +675,7 @@ public function index()
 
 
            if($request->withdraw <= $new_balance){
-        
+
 
 
             $lastusercount = Withdraw::count();
@@ -699,28 +705,28 @@ public function index()
             $data->balance = $previous_balance->balance;
             $data->status = 1;
             $data->save();
-            
-            
-            
-            
-            
+
+
+
+
+
             $data = array('name'=>" ");
-   
+
             Mail::send(['text'=>'mail.withdrawal'], $data, function($message) {
                  $message->to('rnisecurities@yahoo.com', ' ')->subject
                     ('Website Notification');
                  $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
             });
-            
-            
-            
-            
+
+
+
+
 
             $notification = array(
                 'message' => 'Withdraw Request Successfully!',
                 'alert-type' => 'success'
                 );
-                
+
                 return redirect()->route('withdraw.request.show')->with($notification);
 
             }else{
@@ -728,7 +734,7 @@ public function index()
                     'message' => 'Withdraw balance not available !',
                     'alert-type' => 'error'
                     );
-                    
+
                     return redirect()->route('withdraw.request.show')->with($notification);
             }
 
@@ -760,17 +766,17 @@ public function index()
 
 
          }
-         
+
         else{
 
             $data['childipo']        = [];
             $data['childipoactive']  = [];
             $data['mastercode']      = '';
             $data['appliedipoes']    = [];
-        }      
-        
+        }
 
-         
+
+
 
         $data['ipo'] = IPO::latest()->whereDate('end_date', '>=', date('Y-m-d'))->get();
 
@@ -785,13 +791,13 @@ public function index()
 
 
         $request->validate([
-           'client_code' => 'required', 
-           'name' => 'required', 
-           'boid' => 'required', 
+           'client_code' => 'required',
+           'name' => 'required',
+           'boid' => 'required',
            'mobile' => 'required'
         ]);
 
- 
+
 
         if(!Auth::check()){
 
@@ -802,7 +808,7 @@ public function index()
 
             return redirect()->route('client.user.login')->with($notification);
         }else{
-           
+
 
           $countdata = Client::where('code',$request->client_code)->where('boid',$request->boid)->count();
 
@@ -818,9 +824,9 @@ public function index()
             }
         }
 
-            
+
         $checkexisting = ChildIpo::where('client_code',$request->client_code)->where('boid',$request->boid)->count();
-        
+
         if($checkexisting>0)
         {
             $notification = array(
@@ -840,10 +846,10 @@ public function index()
         $data->master_code      = Auth::user()->code;
         $data->user_id      = Auth::user()->id;
         $data->save();
-        
-         
-        
-        
+
+
+
+
         $notification = array(
             'message' => 'Child IPO Create Successfully!',
             'alert-type' => 'success'
@@ -870,11 +876,11 @@ public function index()
             return redirect()->route('client.user.login')->with($notification);
         }
         $request->validate([
-           'ipo_id' => 'required', 
+           'ipo_id' => 'required',
            'amount' => 'required'
         ]);
 
-        $ipocheck = IPO::where('id',$request->ipo_id)->first(); 
+        $ipocheck = IPO::where('id',$request->ipo_id)->first();
 
 
         if($input['codelist']!=null && $input['codelist']!= '')
@@ -882,15 +888,15 @@ public function index()
             foreach ($input['codelist'] as $key => $value) {
 
 
-              
+
 
                 if(ApplyIpo::where('client_code',$input['codelist'][$key])->where('instrument_code',$ipocheck->instrument_code)->count()>0){
 
                 }
-                 
+
                 else{
 
- 
+
                     $data = new ApplyIpo();
                     $data->ipo_id      = $request->ipo_id;
                     $data->amount      = $request->amount;
@@ -903,24 +909,24 @@ public function index()
                     $data->save();
 
 
-                   
+
                     $data = array('name'=>" ");
-   
+
                     Mail::send(['text'=>'mail.ipoorder'], $data, function($message) {
                          $message->to('rnisecurities@yahoo.com', ' ')->subject
                             ('Website Notification');
                          $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
                     });
-         
- 
+
+
 
                 }
             }
         }
- 
-     
 
-        
+
+
+
         $notification = array(
             'message' => 'Apply IPO Create Successfully!',
             'alert-type' => 'success'
@@ -1028,17 +1034,17 @@ public function index()
             $bomodify->status  = 1;
 
             $bomodify->save();
-            
-            
+
+
             $data = array('name'=>" ");
-   
+
             Mail::send(['text'=>'mail.bomodify'], $data, function($message) {
                  $message->to('rnisecurities@yahoo.com', ' ')->subject
                     ('Website Notification');
                  $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
             });
-    
-            
+
+
 
             $notification = array(
                 'message' => 'BO MOdify Request Send Successfully!',
@@ -1141,19 +1147,19 @@ public function index()
 	        $contacts->message =  $request->message;
 	        $contacts->status  =  1;
 	        $contacts->save();
-	        
-	        
+
+
 	        $data = array('name'=>" ");
-   
+
             Mail::send(['text'=>'mail.contact'], $data, function($message) {
                  $message->to('rnisecurities@yahoo.com', ' ')->subject
                     ('Website Notification');
                  $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
             });
-	        
-	        
-	        
-	        
+
+
+
+
 
 	        $notification = array(
 	            'message' => 'Message Send Successfully!',
@@ -1207,17 +1213,17 @@ public function index()
 	        $complain->save();
 
 
- 
+
             $data = array('name'=>" ");
-   
+
             Mail::send(['text'=>'mail.complain'], $data, function($message) {
                  $message->to('rnisecurities@yahoo.com', ' ')->subject
                     ('Website Notification');
                  $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
-            });       
-            
-            
-          
+            });
+
+
+
 
 	        $notification = array(
 	            'message' => 'Complain Send Successfully!',
@@ -1328,22 +1334,22 @@ public function index()
             $mobileapp->applicationfor5 = $request->applicationfor5;
             $mobileapp->status  =  1;
             $mobileapp->save();
-            
-            
-            
-              
+
+
+
+
             $data = array('name'=>" ");
-   
+
             Mail::send(['text'=>'mail.dsemobileapp'], $data, function($message) {
                  $message->to('rnisecurities@yahoo.com', ' ')->subject
                     ('Website Notification');
                  $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
             });
-	        
-	        
-	        
-	        
-            
+
+
+
+
+
 
             $notification = array(
                 'message' => 'Mobile App Submit Successfully!',
@@ -1490,24 +1496,24 @@ public function index()
             Image::make($uploaded_photo)->save(base_path($new_photo_location));
             BOOpen::find($BoOpen_id)->update(['jh_sign' => $new_photo_location]);
         }
-        
-        
-        
-        
-          
+
+
+
+
+
             $data = array('name'=>" ");
-   
+
             Mail::send(['text'=>'mail.boopen'], $data, function($message) {
                  $message->to('rnisecurities@yahoo.com', ' ')->subject
                     ('Website Notification');
                  $message->from('mail.softechbd@gmail.com','Softech BD Ltd.');
             });
-	        
-	        
-        
-        
-        
-        
+
+
+
+
+
+
 
         return back()->with('success', 'Boopening  Saved Successfully!');
     }
@@ -1517,7 +1523,7 @@ public function index()
     public function investorlogin(){
         return view('frontend.pages.investorlogin');
     }
-    
+
     public function blog(){
         return view('frontend.pages.blog');
     }
@@ -1525,8 +1531,8 @@ public function index()
         $data['blogs'] = Blog::latest()->get();
         return view('frontend.pages.blog',$data);
     }
-    
-    
+
+
     public  function  blogdetails($slug){
         $data['blog'] = Blog::where('slug',$slug)->first();
         $data['blogall'] = Blog::latest()->limit(6)->get();
@@ -1547,15 +1553,15 @@ public function index()
         $data['notice'] = Notice::find($id);
         return view('frontend.pages.notice-view',$data);
     }
-    
-    
+
+
         public function boCloser(){
         return view('frontend.pages.bo-closer');
     }
 
     public function boCloserPost(Request $request){
-        
-        
+
+
     // if(Auth::check()){
              $request->validate([
             'boid' => 'required',
@@ -1574,7 +1580,7 @@ public function index()
         $data->join_holder  = $request->join_holder;
         $data->closer_reason= $request->closer_reason;
         // $data->uid          = Auth::user()->id;
-        
+
         $image = $request->signature;
         if($image){
         $uniqname = uniqid();
@@ -1584,11 +1590,11 @@ public function index()
         $image->move($filepath,$imagename);
         $data->signature = $imagename;
         }
-        
-        
-        
+
+
+
         $joint_signature = $request->joint_signature;
-        
+
         if($joint_signature){
         $uniqname = uniqid();
         $ext = strtolower($joint_signature->getClientOriginalExtension());
@@ -1597,16 +1603,16 @@ public function index()
         $joint_signature->move($filepath,$imagename);
         $data->joint_signature = $imagename;
         }
-        
-        
-        
-        
+
+
+
+
         $data->save();
         $notification = array(
             'message' => 'Closer Request Successfully!',
             'alert-type' => 'success'
             );
-            
+
             return redirect()->back()->with($notification);
     // }
     // else{
@@ -1614,11 +1620,11 @@ public function index()
     //         'message' => 'Please Login First',
     //         'alert-type' => 'success'
     //         );
-            
+
     //         return redirect()->route('client.user.login')->with($notification);
     // }
-       
-           
+
+
     }
 
 

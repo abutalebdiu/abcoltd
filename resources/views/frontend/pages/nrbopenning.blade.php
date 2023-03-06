@@ -1,46 +1,49 @@
 @extends('frontend.layouts.app')
-@section('title','BO Opening Online')
+@section('title','Single BO Opening Online')
 @section('content')
 
 
  <section class="mobile-input-section py-4">
-            <div class="container clearfix">
-                <div class="row">
-                    <div class="section-title text-center">
-                        <h4>BO Account opening</h4>
-                        <div class="head-after m-auto mt-3 mb-2 clearfix">
-                            <span class="line"></span>
-                            <span class="circle"></span>
-                            <span class="line"></span>
-                        </div>
-                    </div>
-
+    <div class="container clearfix">
+        <div class="row">
+            <div class="section-title text-center">
+                <h4>BO Account opening</h4>
+                <div class="head-after m-auto mt-3 mb-2 clearfix">
+                    <span class="line"></span>
+                    <span class="circle"></span>
+                    <span class="line"></span>
                 </div>
-
-
-
-
-
+            </div>
+        </div>
 
 
     <!--    SINGLE BO OPEN-->
     <section class="join-section clearfix py-5">
         <div class="custom-container">
-
-
-
             <div class="join-form-box clearfix">
-                <form class="seller-step-form" action="{{ route('boopening.single.store') }}" method="post" enctype="multipart/form-data">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success!</strong> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> Something was wrong. Please fill the form properly.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                <form id="myform" class="seller-step-form" action="{{ route('boopening.single.store') }}" method="POST" enctype="multipart/form-data">
                    @csrf
+
                     <div class="step step-1 active">
                         <div class="icon-box">
                             <span class="active-sell">
                                 <i class="fa fa-user"></i>
-                                Parsonal Information
-                            </span>
-                            <span class="">
-                                <i class="fa fa-user"></i>
-                                contact Information
+                                Parsonal Infomation
                             </span>
                             <span class="">
                                 <i class="fa fa-university"></i>
@@ -48,39 +51,27 @@
                             </span>
                             <span class="">
                                 <i class="fa fa-binoculars"></i>
-                                Nomineee Informatio
-                            </span>
-                            <span class="">
-                                <i class="fa fa-user-plus"></i>
-                                Joint Holder
+                                Nomineee Infomatio
                             </span>
                         </div>
                         <div class="row mobile-input-box">
                             <div class="col-12">
                                 <h5 class="bo-border">
-                                    parsonal information
+                                    parsonal infomation
                                 </h5>
                             </div>
                             <div class="col-12">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="name">Client name : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="name" value="{{ old('name') }}" id="name" placeholder="Client Name">
-                                        <div class="text-danger">{{ $errors->first('name') }}</div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="name" placeholder="Client Name" />
+                                    <div class="text-danger">{{ $errors->first('name') }}</div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="father">father name : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="father" value="{{ old('father') }}" placeholder="Father Name">
-                                        <div class="text-danger">{{ $errors->first('father') }}</div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="father">Father Name</label>
+                                    <input id="father" type="text" name="father" class="form-control" value="{{ old('father') }}" placeholder="Father Name">
+                                    <div class="text-danger">{{ $errors->first('father') }}</div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -89,7 +80,7 @@
                                         <label for="mother">mother name : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="mother" id="mother" value="{{ old('mother') }}" placeholder="Mother Name">
+                                        <input id="mother" type="text" name="mother" id="mother" value="{{ old('mother') }}" placeholder="Mother Name">
                                         <div class="text-danger">{{ $errors->first('mother') }}</div>
                                     </div>
                                 </div>
@@ -116,7 +107,7 @@
                                         <label for="date"> date of birth : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="date" name="birthday_date" value="{{ old('birthday_date') }}">
+                                        <input id="date" type="date" name="birthday_date" value="{{ old('birthday_date') }}">
                                         <div class="text-danger">{{ $errors->first('birthday_date') }}</div>
                                     </div>
                                 </div>
@@ -138,7 +129,7 @@
                                         <label for="address"> Address: </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="address" value="{{ old('address') }}" placeholder="Your Address">
+                                        <input id="address" type="text" name="address" value="{{ old('address') }}" placeholder="Your Address">
                                         <div class="text-danger">{{ $errors->first('address') }}</div>
                                     </div>
                                 </div>
@@ -160,7 +151,7 @@
                                         <label for="postal"> Postal Code: </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="zip_code" value="{{ old('zip_code') }}" placeholder="Postal Code">
+                                        <input id="postal" type="text" name="zip_code" value="{{ old('zip_code') }}" placeholder="Postal Code">
                                         <div class="text-danger">{{ $errors->first('zip_code') }}</div>
                                     </div>
                                 </div>
@@ -171,7 +162,7 @@
                                         <label for="division"> Division : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="division" value="{{ old('division') }}" placeholder="Division">
+                                        <input id="division" type="text" name="division" value="{{ old('division') }}" placeholder="Division">
                                         <div class="text-danger">{{ $errors->first('division') }}</div>
                                     </div>
                                 </div>
@@ -182,7 +173,7 @@
                                         <label for="country"> Country : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="country" value="{{ old('country') }}" placeholder="Country">
+                                        <input id="country" type="text" name="country" value="{{ old('country') }}" placeholder="Country">
                                         <div class="text-danger">{{ $errors->first('country') }}</div>
                                     </div>
                                 </div>
@@ -273,10 +264,7 @@
                                 <i class="fa fa-binoculars"></i>
                                 Nomineee Infomatio
                             </span>
-                            <span class="">
-                                <i class="fa fa-user-plus"></i>
-                                Joint Holder
-                            </span>
+
                         </div>
 
                         <div class="">
@@ -288,7 +276,7 @@
                             <div class="col-12">
                                 <div class="py-2 d-flex bd-highlight">
                                     <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="bank">bank name : </label>
+                                        <label for="bank">Bank name : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
                                         <input type="text" name="bank" value="{{ old('bank') }}" id="bank" placeholder="Bank Name">
@@ -300,19 +288,18 @@
                             <div class="col-12">
                                 <div class="py-2 d-flex bd-highlight">
                                     <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="branch">branch name: </label>
+                                        <label for="branch">Branch name: </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
                                         <input type="text" name="branch" id="branch" value="{{ old('branch') }}" placeholder="Branch Name">
                                         <div class="text-danger">{{ $errors->first('branch') }}</div>
-
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="py-2 d-flex bd-highlight">
                                     <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="account">bank account no : </label>
+                                        <label for="account">Bank account no : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
                                         <input type="text" name="account" value="{{ old('account') }}" id="account" placeholder="Bank Cccount Number">
@@ -324,7 +311,7 @@
                             <div class="col-12">
                                 <div class="py-2 d-flex bd-highlight">
                                     <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="routing">routing number :</label>
+                                        <label for="routing">Routing number :</label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
                                         <input type="text" name="routing" value="{{ old('routing') }}" id="routing" placeholder="Routing Number">
@@ -336,7 +323,7 @@
                             <div class="col-12">
                                 <div class="py-2 d-flex bd-highlight">
                                     <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="cheque">cheque leaf : </label>
+                                        <label for="cheque">Cheque leaf : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
                                         <input type="file" name="bi_cheque" value="{{ old('bi_cheque') }}" id="cheque">
@@ -373,10 +360,7 @@
                                 <i class="fa fa-binoculars"></i>
                                 Nomineee Infomatio
                             </span>
-                            <span class="">
-                                <i class="fa fa-user-plus"></i>
-                                Joint Holder
-                            </span>
+
                         </div>
 
                         <div class="row">
@@ -426,7 +410,7 @@
                                         <label for="mobile"> mobile number :</label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="n_mobile" value="{{ old('n_mobile') }}" id="mobile" placeholder="Nomineee mobile Number">
+                                        <input type="text" name="n_mobile" value="{{ old('n_mobile') }}" id="n_mobile" placeholder="Nomineee mobile Number">
                                         <div class="text-danger">{{ $errors->first('n_mobile') }}</div>
                                     </div>
                                 </div>
@@ -459,7 +443,7 @@
                                         <label for="nnid">Nomineee photo : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="file" name="n_photo" value="{{ old('n_photo') }}" id="nnid">
+                                        <input type="file" name="n_photo" value="{{ old('n_photo') }}" id="n_photo">
                                         <div class="text-danger">{{ $errors->first('n_photo') }}</div>
                                     </div>
                                 </div>
@@ -470,145 +454,20 @@
                                         <label for="nnid">Nomineee signature : </label>
                                     </div>
                                     <div class="form-right w-100 bd-highlight">
-                                        <input type="file" name="n_sign" id="nnid">
+                                        <input type="file" name="n_sign" id="n_sign">
                                         <div class="text-danger">{{ $errors->first('n_sign') }}</div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
 
-
-                        <div class="">
+                         <div class="">
                             <div class="p-btn">
                                 <button type="button" class="previous-btn">Prev</button>
                             </div>
                             <div class="n-btn">
-                                <button type="button" class="next-btn">Next</button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="step step-4">
-                        <div class="icon-box">
-                            <span class="active-sell">
-                                <i class="fa fa-user"></i>
-                                Parsonal Infomation
-                            </span>
-                            <span class="active-sell">
-                                <i class="fa fa-university"></i>
-                                Bank Infomation
-                            </span>
-                            <span class="active-sell">
-                                <i class="fa fa-binoculars"></i>
-                                Nomineee Infomatio
-                            </span>
-                            <span class="active-sell">
-                                <i class="fa fa-user-plus"></i>
-                                Joint Holder
-                            </span>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <h5 class="bo-border">
-                                    joint holder
-                                </h5>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="fullname">full name : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="jh_name" value="{{ old('jh_name') }}" id="fullname" placeholder="Full Name">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="gender">Gender: </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <select name="jh_sex" id="gender">
-                                            <option value="" selected="">--select--</option>
-                                            <option {{ old('jh_sex') == 1 ? 'selected' : '' }} value="1">Male</option>
-                                            <option {{ old('jh_sex') == 2 ? 'selected' : '' }} value="2">Female</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="mobilen">mobile number : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="jh_mobile" value="{{ old('jh_mobile') }}" id="mobilen" placeholder="Mobile Number">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="jnid">NID No : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input type="text" name="jh_nid" value="{{ old('jh_nid') }}" id="jnid" placeholder="NID No">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="nidat"> NID Attachment : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input name="jh_nid_att" value="{{ old('jh_nid_att') }}" type="file" id="nidat">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="jphoto"> photo : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input type="file" name="jh_photo" id="jphoto">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="py-2 d-flex bd-highlight">
-                                    <div class="form-left flex-shrink-1 bd-highlight">
-                                        <label for="jsign"> signature : </label>
-                                    </div>
-                                    <div class="form-right w-100 bd-highlight">
-                                        <input type="file" name="jh_sign" id="jsign">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="">
-                            <div class="p-btn">
-                                <button type="button" class="previous-btn">Prev</button>
-                            </div>
-                            <div class="n-btn">
-                                <button type="submit" class="next-btn">Submit</button>
+                                <button id="step-submit" type="button" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
 
@@ -623,58 +482,7 @@
     <!--    SINGLE BO OPEN END-->
 
             </section>
-
-
-@section('js')
-    const steps = Array.from(document.querySelectorAll("form .step"));
-    const nextBtn = document.querySelectorAll("form .next-btn");
-    const prevBtn = document.querySelectorAll("form .previous-btn");
-    const form = document.querySelector("form");
-
-    nextBtn.forEach((button) => {
-        button.addEventListener("click", () => {
-            changeStep("next");
-        });
-    });
-    prevBtn.forEach((button) => {
-        button.addEventListener("click", () => {
-            changeStep("prev");
-        });
-    });
-
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const inputs = [];
-        form.querySelectorAll("input").forEach((input) => {
-            const {
-                name,
-                value
-            } = input;
-            inputs.push({
-                name,
-                value
-            });
-        });
-        console.log(inputs);
-        form.reset();
-    });
-
-    function changeStep(btn) {
-        let index = 0;
-        const active = document.querySelector(".active");
-        index = steps.indexOf(active);
-        steps[index].classList.remove("active");
-        if (btn === "next") {
-            index++;
-        } else if (btn === "prev") {
-            index--;
-        }
-        steps[index].classList.add("active");
-    }
-
 @endsection
 
-@endsection
-
-
+@include('frontend.pages.form')
 

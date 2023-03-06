@@ -31,9 +31,6 @@ Route::get('/clear', function() {
 Route::get('/','FrontendController@index')->name('frontend');
 
 
-
-
-
 Route::get('client/register','FrontendController@clientregister')->name('client.user.register');
 Route::post('client/register/store','FrontendController@clientregisterstore')->name('client.user.register.store');
 Route::get('client/login','FrontendController@clientlogin')->name('client.user.login');
@@ -41,10 +38,7 @@ Route::post('client/user/login/dashboard','FrontendController@clientLogindeshboa
 
 
 Route::get('client/password/forgot','FrontendController@passwordforgot')->name('client.password.forgot');
-
 Route::post('client/password/reset','FrontendController@passwordreset')->name('client.password.reset');
-
-
 
 
 Route::get('logout','HomeController@logout')->name('logout');
@@ -107,8 +101,9 @@ Route::post('dse/mobile/application/store','FrontendController@des_mobile_applic
 
 Route::get('single/boopening','FrontendController@singleboopening')->name('boopening.single');
 Route::post('single/boopening/store','FrontendController@boopeningstore')->name('boopening.single.store');
-
 Route::get('joint/boopening','FrontendController@jointboopening')->name('boopening.joint');
+Route::get('nrb/boopening','FrontendController@nrbopenning')->name('boopening.nrb');
+
 
 
 
@@ -199,7 +194,7 @@ Route::group(['prefix'=>'deposit','middleware'=>['auth','admin']],function(){
   Route::get('show/{id}','DepositController@show')->name('backend.deposit.show');
   Route::post('change/status/{id}','DepositController@changestatus')->name('deposit.change.status');
   Route::get('deposit/destroy/{id}','DepositController@destroy')->name('deposit.destroy');
-  
+
   Route::get('deposit/export','DepositController@deposit')->name('deposit.deposit');
 
 });
@@ -211,7 +206,7 @@ Route::group(['prefix'=>'withdraw','middleware'=>['auth','admin']],function(){
 
 
   Route::get('index','WithdrawController@index')->name('withdraw.index');
-  
+
   route::get('/request','WithdrawController@withdrawrequest')->name('withdraw.request');
   Route::get('complect','WithdrawController@complect')->name('withdraw.complect');
   Route::get('/accept','WithdrawController@accept')->name('withdraw.accept');
@@ -220,7 +215,7 @@ Route::group(['prefix'=>'withdraw','middleware'=>['auth','admin']],function(){
   Route::get('destroy/{id}','WithdrawController@destroy')->name('withdraw.destroy');
   Route::get('show/{id}','WithdrawController@show')->name('withdraw.show');
   Route::get('preview/{id}','WithdrawController@preview')->name('withdraw.preview');
-  
+
 
 });
 
@@ -252,16 +247,16 @@ Route::group(['prefix'=>'admin/user','namespace'=>'Backend\User','middleware'=>[
       Route::get('edit/{id}','UserController@edit')->name('user.edit');
       Route::post('update/{id}','UserController@update')->name('user.update');
       Route::get('destroy/{id}','UserController@destroy')->name('user.destroy');
-      
-      
+
+
       Route::get('hard/delete/{id}','UserController@harddelete')->name('user.delete');
-      
-      
+
+
        Route::get('request/index','UserController@userrequest')->name('user.request.index');
        Route::get('request/approve','UserController@userapprove')->name('user.request.approve');
        Route::get('request/reject','UserController@userreject')->name('user.request.reject');
        Route::post('request/change/{id}','UserController@adminuserrequestchange')->name('admin.user.request.change');
-      
+
 
 
       Route::get('profile','ProfileController@index')->name('user.profile');
@@ -321,12 +316,12 @@ Route::group(['prefix'=>'website','namespace'=>'Backend\Setting','middleware'=>[
       Route::get('edit/','WebsiteSettingController@edit')->name('website.setting.edit');
       Route::post('update','WebsiteSettingController@update')->name('website.setting.update');
       Route::get('destroy/{id}','WebsiteSettingController@destroy')->name('website.setting.destroy');
-      
-      
+
+
       Route::get('management/index','WebsiteSettingController@management')->name('website.management.index');
       Route::get('management/edit','WebsiteSettingController@managementedit')->name('website.management.edit');
       Route::post('management/update','WebsiteSettingController@managementupdate')->name('website.management.update');
-      
+
 });
 
 
@@ -487,13 +482,13 @@ Route::group(['prefix'=>'social-media','namespace'=>'Backend\Setting','middlewar
         Route::post("/create/post", "BlogController@store")->name("admin.blog.store");
         Route::get("/destroy/{id}", "BlogController@destroy")->name("admin.blog.destroy");
     });
-    
-    
+
+
     Route::group(['prefix'=>'sms','namespace'=>'Backend\Customnumber','middleware'=>['auth','admin']],function (){
       Route::post("/post", "CustomNumberController@store")->name("sms.custom.number.store");
       Route::post("/mobile/import", "CustomNumberController@mobileimport")->name("mobile.import");
       Route::get("/destroy/{id}", "CustomNumberController@destroy")->name("sms.custom.number.destroy");
- 
+
     });
 
 
@@ -530,7 +525,7 @@ Route::group(['prefix'=>'social-media','namespace'=>'Backend\Setting','middlewar
       Route::get("/destroy/{id}", "CustomNumberController@destroy")->name("sms.custom.number.destroy");
 
       Route::post('custom/number/import','CustomNumberController@numberimport')->name('custom.number.import');
-     
+
 
     });
 

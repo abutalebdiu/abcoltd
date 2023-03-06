@@ -77,7 +77,7 @@
                                                 <i class="fa fa-map-marker"></i>
                                             </div>
                                             <div class="p-2 w-100 bd-highlight info-txt">
-                                                <b>Head Office : <br></b>Suit # 728, 6th Floor, 9/E, Motijheel C/A, Dhaka - 1000
+                                                <b>Head Office : <br></b>59/C Kalachandpur Main Road, Dhaka 1212
                                             </div>
                                         </div>
                                     </div>
@@ -87,32 +87,23 @@
                                                 <i class="fa fa-envelope-o"></i>
                                             </div>
                                             <div class="p-2 w-100 bd-highlight info-txt">
-                                                rnisecuritiesltd@gmail.com
+                                                info@abcdsebroker.com
                                             </div>
                                         </div>
                                     </div>
-                                    <!--div class="info-box">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="p-2 flex-shrink-1 bd-highlight icon">
-                                                <i class="fa fa-envelope-o"></i>
-                                            </div>
-                                            <div class="p-2 w-100 bd-highlight info-txt">
-                                                mnzsecurities@gmail.com
-                                            </div>
-                                        </div>
-                                    </div-->
+
                                     <div class="info-box">
                                         <div class="d-flex bd-highlight">
                                             <div class="p-2 flex-shrink-1 bd-highlight icon">
                                                 <i class="fa fa-volume-control-phone"></i>
                                             </div>
-                                            <div class="p-2 w-100 bd-highlight info-txt">  
-                                                +880-1912-372605
+                                            <div class="p-2 w-100 bd-highlight info-txt">
+                                                +8801742568655
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="contact-info-box">
+                                {{-- <div class="contact-info-box">
                                     <div class="info-box">
                                         <div class="d-flex bd-highlight">
                                             <div class="p-2 flex-shrink-1 bd-highlight icon">
@@ -133,16 +124,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--div class="info-box">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="p-2 flex-shrink-1 bd-highlight icon">
-                                                <i class="fa fa-envelope-o"></i>
-                                            </div>
-                                            <div class="p-2 w-100 bd-highlight info-txt">
-                                                mnzsecurities@gmail.com
-                                            </div>
-                                        </div>
-                                    </div-->
                                     <div class="info-box">
                                         <div class="d-flex bd-highlight">
                                             <div class="p-2 flex-shrink-1 bd-highlight icon">
@@ -175,16 +156,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--div class="info-box">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="p-2 flex-shrink-1 bd-highlight icon">
-                                                <i class="fa fa-envelope-o"></i>
-                                            </div>
-                                            <div class="p-2 w-100 bd-highlight info-txt">
-                                                mnzsecurities@gmail.com
-                                            </div>
-                                        </div>
-                                    </div-->
+
                                     <div class="info-box">
                                         <div class="d-flex bd-highlight">
                                             <div class="p-2 flex-shrink-1 bd-highlight icon">
@@ -195,7 +167,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="social-contact-icons">
                                     <p><b>Connect with us :</b>
                                         <a href="https://www.facebook.com/rnidse128" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -208,11 +180,11 @@
                     <div class="row">
                         <div class="google-maps pb-5 bt-3">
                            <h4>our location :</h4>
-                           
+
                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.2933114886033!2d90.42131188535828!3d23.722655406138504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c66736d23cf3%3A0x78701c3ab683ab6!2sStock%20Ltd.!5e0!3m2!1sen!2sbd!4v1626112726844!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -222,5 +194,5 @@
 
 
 
- 
+
 @endsection

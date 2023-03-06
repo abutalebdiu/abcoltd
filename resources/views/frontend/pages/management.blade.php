@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12 mb-5 mt-3">
                     <div class="section-title text-center">
-                        <h4>Management Of RNI Securities Limited</h4>
+                        <h4>Management Of {{ $websetting->site_name }}</h4>
                         <div class="head-after m-auto mt-3 mb-2 clearfix">
                             <span class="line"></span>
                             <span class="circle"></span>
@@ -19,24 +19,6 @@
                 </div>
             </div>
 
-            <div class="row">
-
-                <!--<div class="col-12">-->
-                <!--    <div class="menagement-box">-->
-                <!--        <div class="menagement-photo">-->
-                <!--            <img src="{{ asset($team->ch_image) }}" alt="">-->
-                <!--        </div>-->
-                <!--        <div class="menagement-details">-->
-                <!--            <h5>{{ $team->ch_name }}</h5>-->
-                <!--            <span>{{ $team->ch_designation }}</span>-->
-                <!--            <a href="#" data-bs-toggle="modal" data-bs-target="#"><i class="fa fa-eye"></i>details</a>-->
-
-                <!--        </div>-->
-                <!--    </div>-->
-                <!--</div>-->
-
-            </div>
-            
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4">
                 </div>
@@ -54,8 +36,8 @@
                     </div>
                 </div>
             </div>
-                
-                
+
+
              <div class="row">
                  <div class="col-12 col-sm-6 col-md-4">
                     <div class="menagement-box">
@@ -96,10 +78,10 @@
                         </div>
                     </div>
                 </div>
-                
+
 
             </div>
-            
+
         </div>
     </div>
 </section>
@@ -126,7 +108,7 @@
                         <p class='justify'>
                           {{ $team->ch_description }}
                          </p>
-                       
+
 
                     </div>
                 </div>
@@ -157,7 +139,7 @@
                         <p class='justify'>
                           {{ $team->mg_description }}
                          </p>
-                       
+
 
                     </div>
                 </div>
@@ -189,7 +171,7 @@
                         <p class='justify'>
                           {{ $team->di1_description }}
                          </p>
-                       
+
 
                     </div>
                 </div>
@@ -221,7 +203,7 @@
                         <p class='justify'>
                           {{ $team->di2_description }}
                          </p>
-                       
+
 
                     </div>
                 </div>

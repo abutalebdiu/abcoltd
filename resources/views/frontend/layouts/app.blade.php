@@ -86,7 +86,7 @@
                                         <ul>
                                             <li><a href="{{ route('boopening.single') }}">Open Account (Single BO)</a></li>
                                             <li><a href="{{ route('boopening.joint') }}">Open Account (Joint BO)</a></li>
-                                            <li><a href="#">NRB Account</a></li>
+                                            <li><a href="{{ route('boopening.nrb') }}">NRB Account</a></li>
                                             <li><a href="#">Link Account</a></li>
                                         </ul>
                                     </div>
@@ -104,11 +104,11 @@
                                     </div>
                                 </li>
                                 <li><a href="{{ route('ipo') }}">IPO</a></li>
-                                <li><a href="#">FEES </a></li>
+                                <li><a href="{{ route('fees') }}">FEES </a></li>
                                 <li><a href="{{ route('gallery') }}">gallery</a></li>
                                 <li><a href="{{ route('blog.all') }}">Blog</a></li>
                                 <li><a href="{{ route('careers') }}">Careers</a></li>
-                                <li><a href="#">CONTACT US</a></li>
+                                <li><a href="{{ route('contact') }}">CONTACT US</a></li>
                                 <li class="sub-btn"><a href="javascript:void(0)">MORE <i class="fa fa-angle-down"></i> </a>
                                     <div class="sub-menu">
                                         <ul>
@@ -346,28 +346,28 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                     <div class="footer-box">
                         <div class="footer-head">
-                            <h5>OUR SERVICES</h5>
+                            <h5>Quick Link</h5>
                         </div>
                         <div class="footer-content">
-                            <a href="#">
+                            <a href="www.sec.gov.bd">
                                 <i class="fa fa-angle-right"></i>
-                                Brokerage Services
+                                BSEC
                             </a>
-                            <a href="#">
+                            <a href="www.dsebd.org">
                                 <i class="fa fa-angle-right"></i>
-                                Custodial Services
+                                DSE
                             </a>
-                            <a href="#">
+                            <a href="www.essbangladesh.com">
                                 <i class="fa fa-angle-right"></i>
-                                DP
+                                ESS
                             </a>
-                            <a href="#">
+                            <a href="www.bfiu.org.bd">
                                 <i class="fa fa-angle-right"></i>
-                                SMS
+                                BFIU
                             </a>
-                            <a href="#">
+                            <a href="http://www.finlitbd.com/bn/index.php">
                                 <i class="fa fa-angle-right"></i>
-                                BEFTN
+                                Financial Literacy Program
                             </a>
                         </div>
                     </div>
@@ -394,7 +394,7 @@
                                 </div>
 
                                 <div class="address-details w-100 bd-highlight">
-                                    <span>59/C Kalachandpur Main Road, Dhaka 1212</span>
+                                    <span>{{ $websetting->state_address  }}</span>
                                 </div>
                             </div>
 
@@ -404,7 +404,7 @@
                                 </div>
 
                                 <div class="address-details w-100 bd-highlight">
-                                    <span>+880 1742-568655</span>
+                                    <span>{{ $websetting->phone  }}</span>
                                 </div>
                             </div>
 
@@ -414,7 +414,7 @@
                                 </div>
 
                                 <div class="address-details w-100 bd-highlight">
-                                    <span class="email"> </span>
+                                    <span class="email"> {{ $websetting->email  }} </span>
                                 </div>
                             </div>
                         </div>
