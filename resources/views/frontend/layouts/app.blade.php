@@ -23,9 +23,9 @@
     <!--    animate css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-    <link rel="stylesheet" href="{{ asset('public/frontend') }}/css/style.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css">
     <!--    RESPONSIVE STYLE-->
-    <link rel="stylesheet" href="{{ asset('public/frontend') }}/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/responsive.css">
 </head>
 
 <body>
@@ -452,7 +452,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--    BOOSTRAP-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="{{ asset('public/frontend') }}/js/main.js"></script>
+    <script src="{{ asset('frontend') }}/js/main.js"></script>
     <!-- toster & sweetalert -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{ asset('frontend') }}/js/sweetalert2@9.js"></script>

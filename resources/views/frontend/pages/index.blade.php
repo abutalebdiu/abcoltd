@@ -81,7 +81,7 @@
                         <div class="service-box">
                             <h6>DSE INFO APP</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/cdbl.jpg" alt="wheel chair">
+                                <img src="{{ asset('/images/photo/cdbl.jpg') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -96,7 +96,7 @@
                         <div class="service-box">
                             <h6>DSE MOBILE APP</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/apps.png" alt="wheel chair">
+                                <img src="{{ asset('/images/photo/apps.png') }}" alt="wheel chair">
                             </center>
                             <p>
                                 We have made every effort to develop a strong trading infrastructure, eager to become one of
@@ -108,7 +108,7 @@
                         <div class="service-box">
                             <h6>DSE BROWSER TRADE</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/client.png" alt="wheel chair">
+                                <img src="{{ asset('/images/photo/client.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -124,7 +124,7 @@
                         <div class="service-box">
                             <h6>SHARE TRADING</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/cdbl.jpg" alt="wheel chair">
+                                <img src="{{ asset('/images/photo/cdbl.jpg') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -139,7 +139,7 @@
                         <div class="service-box">
                             <h6>IPO APPLICATION</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/apps.png" alt="wheel chair">
+                                <img src="{{ asset('images/photo/apps.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -152,7 +152,7 @@
                         <div class="service-box">
                             <h6>YOUR ACCOUNT</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/client.png" alt="wheel chair">
+                                <img src="{{ asset('/images/photo/client.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -168,7 +168,7 @@
                         <div class="service-box">
                             <h6>MONEY DEPOSIT</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/ipo.png" alt="wheel chair">
+                                <img src="{{ asset('/images/photo/ipo.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -181,7 +181,7 @@
                         <div class="service-box">
                             <h6>MONEY WITHDRAW</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/OnlineTrading.png" alt="wheel chair">
+                                <img src="{{ asset('images/photo/OnlineTrading.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -194,7 +194,7 @@
                         <div class="service-box">
                             <h6>YEARLY TAX REPORT</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/margin.png" alt="wheel chair">
+                                <img src="{{ asset('/images/photo/margin.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -210,7 +210,7 @@
                         <div class="service-box">
                             <h6>DAILY EMAIL</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/text.png" alt="wheel chair">
+                                <img src="{{ asset('images/photo/text.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -223,7 +223,7 @@
                         <div class="service-box">
                             <h6>HELPFUL STAFF</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/online-ipo.png" alt="wheel chair">
+                                <img src="{{ asset('images/photo/online-ipo.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
@@ -236,7 +236,7 @@
                         <div class="service-box">
                             <h6>CUSTOMER FEEDBACK</h6>
                             <center>
-                                <img src="{{ asset('public') }}/images/photo/online-ipo.png" alt="wheel chair">
+                                <img src="{{ asset('images/photo/online-ipo.png') }}" alt="wheel chair">
                             </center>
 
                             <p>
